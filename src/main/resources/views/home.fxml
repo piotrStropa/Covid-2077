@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stropa.HomeControler">
+   <children>
+      <BarChart fx:id="mainChart" prefHeight="550.0" prefWidth="1280.0">
+        <xAxis>
+          <CategoryAxis prefHeight="27.0" prefWidth="1219.0" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button fx:id="showAll" layoutX="19.0" layoutY="656.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="253.0" text="Show Chart" />
+      <Button fx:id="showCountrySpec" layoutX="1128.0" layoutY="564.0" mnemonicParsing="false" prefHeight="139.0" prefWidth="137.0" text="Show Chart" />
+      <Label layoutX="82.0" layoutY="526.0" prefHeight="27.0" prefWidth="154.0" text="All countries data:" />
+      <ChoiceBox fx:id="allDataChoice" layoutX="17.0" layoutY="600.0" prefHeight="40.0" prefWidth="253.0" />
+      <Label layoutX="17.0" layoutY="564.0" prefHeight="27.0" prefWidth="229.0" text="Data type:" />
+      <Line endX="300.0" endY="532.0" startX="300.0" startY="703.0" />
+      <Label layoutX="372.0" layoutY="529.0" prefHeight="21.0" prefWidth="204.0" text="Country-specific data:" />
+      <ChoiceBox fx:id="countryChoice" layoutX="322.0" layoutY="598.0" prefHeight="40.0" prefWidth="238.0" />
+      <Label layoutX="321.0" layoutY="565.0" prefHeight="27.0" prefWidth="238.0" text="Country:" />
+      <ChoiceBox fx:id="timeChoice" layoutX="574.0" layoutY="598.0" prefHeight="40.0" prefWidth="238.0" />
+      <Label layoutX="576.0" layoutY="565.0" prefHeight="27.0" prefWidth="238.0" text="Time:" />
+      <Label layoutX="835.0" layoutY="565.0" prefHeight="27.0" prefWidth="229.0" text="Data type:" />
+      <ChoiceBox fx:id="countryDataChoice" layoutX="828.0" layoutY="597.0" prefHeight="40.0" prefWidth="263.0" />
+   </children>
+</Pane>
