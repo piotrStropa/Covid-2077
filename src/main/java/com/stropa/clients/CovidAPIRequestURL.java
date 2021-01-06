@@ -1,4 +1,4 @@
-package com.stropa;
+package com.stropa.clients;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -6,20 +6,20 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Request{
+public class CovidAPIRequestURL implements RequestURL {
 
     private String endpoint;
     private Map<String, String> queryParams;
 
-    public Request(String url, Map<String, String> queryParams){
+    public CovidAPIRequestURL(String url, Map<String, String> queryParams){
         this.endpoint = url;
         this.queryParams = queryParams;
     }
 
-    public Request(){
+    public CovidAPIRequestURL(){
     }
 
-    public String getUrlWithParams(){
+    public String getRequestURL(){
         StringBuilder result = new StringBuilder(endpoint);
         if(!queryParams.isEmpty()){
             Iterator<Map.Entry<String, String>> iterator =  queryParams.entrySet().iterator();
@@ -36,7 +36,7 @@ public class Request{
 
 
     public static final class RequestBuilder {
-        private final String endpoint = "https://api.covid19api.com";
+        private final String covidAPIEndpoint = "http://api.covid19api.com";
         private String area = "";
         private String timeInterval = "";
         private String dataType = "";
@@ -93,13 +93,13 @@ public class Request{
             return this;
         }
 
-        public Request build() {
-            Request request = new Request();
-            if(area.equals("summary")) request.endpoint = endpoint.concat("/" + area);
-            else request.endpoint = endpoint + (timeInterval.isEmpty() ? "" : "/" + timeInterval) + "/" +
+        public CovidAPIRequestURL build() {
+            CovidAPIRequestURL covidAPIRequest = new CovidAPIRequestURL();
+            if(area.equals("summary")) covidAPIRequest.endpoint = covidAPIEndpoint.concat("/" + area);
+            else covidAPIRequest.endpoint = covidAPIEndpoint + (timeInterval.isEmpty() ? "" : "/" + timeInterval) + "/" +
                     area + "/" + dataType;
-            request.queryParams = params;
-            return request;
+            covidAPIRequest.queryParams = params;
+            return covidAPIRequest;
         }
     }
 }
