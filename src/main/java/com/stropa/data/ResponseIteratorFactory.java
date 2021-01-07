@@ -35,15 +35,15 @@ public class ResponseIteratorFactory {
         }
 
         switch (interval) {
-            case LAST_MONTH : requestBuilder.fromLastMonth();
-            case LAST_SIX_MONTHS :requestBuilder.fromLastSixMonths();
-            default : requestBuilder.fromDayOne();
+            case LAST_MONTH : requestBuilder.fromLastMonth(); break;
+            case LAST_SIX_MONTHS :requestBuilder.fromLastSixMonths(); break;
+            default : requestBuilder.fromDayOne(); break;
         }
 
         switch (type) {
-            case RECOVERED : requestBuilder.recovered();
-            case DEATHS : requestBuilder.deaths();
-            default : requestBuilder.confirmed();
+            case RECOVERED : requestBuilder.recovered();break;
+            case DEATHS : requestBuilder.deaths();break;
+            default : requestBuilder.confirmed();break;
         }
         requestBuilder.country(country);
 
