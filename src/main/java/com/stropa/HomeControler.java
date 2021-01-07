@@ -58,7 +58,7 @@ public class HomeControler {
         summaryDataChoiceList.forEach(c -> allDataChoice.getItems().add(c));
 
         mainChart.setLegendVisible(false);
-
+        mainChart.getXAxis().setAnimated(false);
         showAll.setOnMouseClicked(e -> {
             DataType type = GraphDataLoader.getInstance().toDataType((String) allDataChoice.getValue());
             GraphDataLoader.getInstance().loadSummaryData(type);
@@ -66,6 +66,7 @@ public class HomeControler {
             mainChart.layout();
             mainChart.getData().add(GraphDataLoader.getInstance().getChartData());
             mainChart.getData().sort(Comparator.comparingDouble(x -> -((XYChart.Data<String, Number>)x).getYValue().doubleValue()));
+
         });
 
         showCountrySpec.setOnMouseClicked(e -> {
