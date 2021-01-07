@@ -48,6 +48,7 @@ public class HomeControler {
 
             countries.forEach(c -> countryMap.put(c.substring(0, c.indexOf("|")), c.substring(c.indexOf("|") + 1)));
             countries.forEach(c -> countryChoice.getItems().add(c.substring(0, c.indexOf("|"))));
+            countryChoice.getItems().sort(Comparator.naturalOrder());
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

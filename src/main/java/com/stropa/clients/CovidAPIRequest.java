@@ -58,7 +58,7 @@ public class CovidAPIRequest implements Request {
 
 
         public RequestBuilder fromDayOne(){
-            timeInterval = "total/dayone";
+            timeInterval = "dayone";
             return this;
         }
 
@@ -90,7 +90,7 @@ public class CovidAPIRequest implements Request {
         }
 
         public RequestBuilder country(String country){
-            area = "total/country/" + country;
+            area = "country/" + country;
             return this;
         }
 
@@ -102,7 +102,7 @@ public class CovidAPIRequest implements Request {
         public CovidAPIRequest build() {
             CovidAPIRequest covidAPIRequest = new CovidAPIRequest();
             if(area.equals("summary")) covidAPIRequest.endpoint = covidAPIEndpoint.concat("/" + area);
-            else covidAPIRequest.endpoint = covidAPIEndpoint + (timeInterval.isEmpty() ? "" : "/" + timeInterval) + "/" +
+            else covidAPIRequest.endpoint = covidAPIEndpoint + "/total" + (timeInterval.isEmpty() ? "" : "/" + timeInterval) + "/" +
                     area + "/" + dataType;
             covidAPIRequest.queryParams = params;
             covidAPIRequest.method = method;
