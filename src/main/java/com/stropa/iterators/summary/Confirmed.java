@@ -7,6 +7,8 @@ import org.json.JSONObject;
 public class Confirmed implements SummaryEntryStrategy {
     @Override
     public XYChart.Data<String, Number> get(JSONObject summaryEntry) {
-        return new XYChart.Data<>(summaryEntry.getString("Country"), summaryEntry.getInt("TotalConfirmed"));
+        String country = summaryEntry.getString("Country");
+        if(country.length() > 15) country = country.substring(0, 15).concat("...");
+        return new XYChart.Data<>(country, summaryEntry.getInt("TotalConfirmed"));
     }
 }

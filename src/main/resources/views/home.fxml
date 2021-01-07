@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stropa.HomeControler">
    <children>
-      <BarChart fx:id="mainChart" prefHeight="550.0" prefWidth="1280.0">
+      <BarChart fx:id="mainChart" prefHeight="450.0" prefWidth="1280.0">
         <xAxis>
           <CategoryAxis prefHeight="27.0" prefWidth="1219.0" side="BOTTOM" />
         </xAxis>
@@ -27,6 +27,6 @@
       <ChoiceBox fx:id="timeChoice" layoutX="574.0" layoutY="598.0" prefHeight="40.0" prefWidth="238.0" />
       <Label layoutX="576.0" layoutY="565.0" prefHeight="27.0" prefWidth="238.0" text="Time:" />
       <Label layoutX="835.0" layoutY="565.0" prefHeight="27.0" prefWidth="229.0" text="Data type:" />
-      <ChoiceBox fx:id="countryDataChoice" layoutX="828.0" layoutY="597.0" prefHeight="40.0" prefWidth="263.0" />
+      <ChoiceBox fx:id="dailyDataChoice" layoutX="828.0" layoutY="597.0" prefHeight="40.0" prefWidth="263.0" />
    </children>
 </Pane>

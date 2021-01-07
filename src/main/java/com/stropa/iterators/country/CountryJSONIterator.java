@@ -11,8 +11,8 @@ public class CountryJSONIterator implements Iterator<XYChart.Data<String, Number
     int size;
     int currentIndex;
 
-    public CountryJSONIterator(JSONObject countryResponse, CountryEntryStrategy collectionStrategy){
-        dailyEntries = new JSONArray(countryResponse);
+    public CountryJSONIterator(JSONArray countryResponse, CountryEntryStrategy collectionStrategy){
+        dailyEntries = countryResponse;
         this.collectionStrategy = collectionStrategy;
         size = dailyEntries.length();
         currentIndex = 0;

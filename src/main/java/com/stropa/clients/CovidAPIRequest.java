@@ -6,19 +6,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class CovidAPIRequestURL implements RequestURL {
+public class CovidAPIRequest implements Request {
 
     private String endpoint;
     private Map<String, String> queryParams;
+    private Method method;
+    private byte[] body;
 
-    public CovidAPIRequestURL(String url, Map<String, String> queryParams){
-        this.endpoint = url;
-        this.queryParams = queryParams;
-    }
-
-    public CovidAPIRequestURL(){
-    }
-
+    @Override
     public String getRequestURL(){
         StringBuilder result = new StringBuilder(endpoint);
         if(!queryParams.isEmpty()){
@@ -34,14 +29,25 @@ public class CovidAPIRequestURL implements RequestURL {
         return result.toString();
     }
 
+    @Override
+    public Method getRequestMethod() {
+        return method;
+    }
+
+    @Override
+    public byte[] getRequestBody() {
+        return body;
+    }
+
 
     public static final class RequestBuilder {
         private final String covidAPIEndpoint = "http://api.covid19api.com";
+        private final Method method = Method.GET;
+        private final byte[] body = new byte[0];
         private String area = "";
         private String timeInterval = "";
         private String dataType = "";
         private Map<String, String> params = new HashMap<>();
-
 
         private RequestBuilder() {
         }
@@ -52,7 +58,7 @@ public class CovidAPIRequestURL implements RequestURL {
 
 
         public RequestBuilder fromDayOne(){
-            timeInterval = "dayOne";
+            timeInterval = "total/dayone";
             return this;
         }
 
@@ -84,7 +90,7 @@ public class CovidAPIRequestURL implements RequestURL {
         }
 
         public RequestBuilder country(String country){
-            area = "country/" + country;
+            area = "total/country/" + country;
             return this;
         }
 
@@ -93,12 +99,16 @@ public class CovidAPIRequestURL implements RequestURL {
             return this;
         }
 
-        public CovidAPIRequestURL build() {
-            CovidAPIRequestURL covidAPIRequest = new CovidAPIRequestURL();
+        public CovidAPIRequest build() {
+            CovidAPIRequest covidAPIRequest = new CovidAPIRequest();
             if(area.equals("summary")) covidAPIRequest.endpoint = covidAPIEndpoint.concat("/" + area);
             else covidAPIRequest.endpoint = covidAPIEndpoint + (timeInterval.isEmpty() ? "" : "/" + timeInterval) + "/" +
                     area + "/" + dataType;
             covidAPIRequest.queryParams = params;
+            covidAPIRequest.method = method;
+            covidAPIRequest.body = body;
+
+            System.out.println(covidAPIRequest.getRequestURL());
             return covidAPIRequest;
         }
     }
