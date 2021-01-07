@@ -35,10 +35,10 @@ public class HttpClient {
                         .timeout(Duration.ofMillis(connectionTimeout));
 
             switch(request.getRequestMethod()){
-                case GET -> builder = builder.GET();
-                case POST -> builder = builder.POST(HttpRequest.BodyPublishers.ofByteArray(request.getRequestBody()));
-                case PUT -> builder = builder.PUT(HttpRequest.BodyPublishers.ofByteArray(request.getRequestBody()));
-                case DELETE -> builder = builder.DELETE();
+                case GET : builder = builder.GET(); break;
+                case POST : builder = builder.POST(HttpRequest.BodyPublishers.ofByteArray(request.getRequestBody())); break;
+                case PUT : builder = builder.PUT(HttpRequest.BodyPublishers.ofByteArray(request.getRequestBody())); break;
+                case DELETE : builder = builder.DELETE(); break;
             }
 
             HttpRequest httpRequest = builder.build();

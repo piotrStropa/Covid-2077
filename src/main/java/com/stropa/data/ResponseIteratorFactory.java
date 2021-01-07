@@ -22,31 +22,28 @@ public class ResponseIteratorFactory {
             System.out.println(new String(response));
             SummaryData data = new SummaryData(response);
             switch (type) {
-                case CONFIRMED -> {
+                case CONFIRMED:
                     return data.confirmedIterator();
-                }
-                case RECOVERED -> {
+                case RECOVERED:
                     return data.recoveredIterator();
-                }
-                case DEATHS -> {
+                case DEATHS:
                     return data.deathsIterator();
-                }
-                case MORTALITY -> {
+                case MORTALITY:
                     return data.mortalityIterator();
-                }
+
             }
         }
 
         switch (interval) {
-            case LAST_MONTH -> requestBuilder.fromLastMonth();
-            case LAST_SIX_MONTHS -> requestBuilder.fromLastSixMonths();
-            default -> requestBuilder.fromDayOne();
+            case LAST_MONTH : requestBuilder.fromLastMonth();
+            case LAST_SIX_MONTHS :requestBuilder.fromLastSixMonths();
+            default : requestBuilder.fromDayOne();
         }
 
         switch (type) {
-            case RECOVERED -> requestBuilder.recovered();
-            case DEATHS -> requestBuilder.deaths();
-            default -> requestBuilder.confirmed();
+            case RECOVERED : requestBuilder.recovered();
+            case DEATHS : requestBuilder.deaths();
+            default : requestBuilder.confirmed();
         }
         requestBuilder.country(country);
 
